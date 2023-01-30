@@ -1,5 +1,6 @@
 ﻿using bytebank.Modelos.Conta;
 using bytebank_ATENDIMENTO.bytebank.Exceptions;
+using ExportaContas;
 using Newtonsoft.Json;
 
 namespace bytebank_ATENDIMENTO.bytebank.Atendimento
@@ -62,7 +63,7 @@ namespace bytebank_ATENDIMENTO.bytebank.Atendimento
                             PesquisarContas();
                             break;
                         case '6':
-                            ExportarContas();
+                            ExportarContaEmArquivo();
                             break;
                         case '7':
                             EncerrarAplicacao();
@@ -79,7 +80,7 @@ namespace bytebank_ATENDIMENTO.bytebank.Atendimento
             }
         }
 
-        private void ExportarContas()
+        private void ExportarContaEmArquivo()
         {
             Console.Clear();
             Console.WriteLine("===============================");
@@ -94,23 +95,24 @@ namespace bytebank_ATENDIMENTO.bytebank.Atendimento
             }
             else
             {
-                string json = JsonConvert.SerializeObject(_listaDeContas, Formatting.Indented);
+                ExportaContas
+                //string json = JsonConvert.SerializeObject(_listaDeContas, Formatting.Indented);
 
-                try
-                {
-                    using (FileStream fs = new FileStream(@"C:\Users\fabio.masao\Desktop\contas.json", FileMode.Create)) 
-                    using (StreamWriter sw = new StreamWriter(fs))
-                    {
-                        sw.WriteLine(json);
-                    }
-                    Console.WriteLine("Arquivo salvo... em C:\\Users\\fabio.masao\\Desktop");
-                }
-                catch (Exception ex)
-                {
+                //try
+                //{
+                //    using (FileStream fs = new FileStream(@"C:\Users\fabio.masao\Desktop\contas.json", FileMode.Create)) 
+                //    using (StreamWriter sw = new StreamWriter(fs))
+                //    {
+                //        sw.WriteLine(json);
+                //    }
+                //    Console.WriteLine("Arquivo salvo... em C:\\Users\\fabio.masao\\Desktop");
+                //}
+                //catch (Exception ex)
+                //{
 
-                    throw new ByteBankException(ex.Message);
-                    Console.ReadKey();
-                }
+                //    throw new ByteBankException(ex.Message);
+                //    Console.ReadKey();
+                //}
             }
         }
 

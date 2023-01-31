@@ -95,7 +95,7 @@ namespace bytebank_ATENDIMENTO.bytebank.Atendimento
             }
             else
             {
-                ExportaContas
+                ExportaContas<ContaCorrente>.Exportar(_listaDeContas, @"C:\Users\fabio.masao\Desktop", "xml");
                 //string json = JsonConvert.SerializeObject(_listaDeContas, Formatting.Indented);
 
                 //try

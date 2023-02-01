@@ -1,7 +1,8 @@
 ﻿using bytebank.Modelos.Conta;
 using bytebank_ATENDIMENTO.bytebank.Exceptions;
-using ExportaContas;
 using Newtonsoft.Json;
+using ExportaContas;
+using System.Xml.Serialization;
 
 namespace bytebank_ATENDIMENTO.bytebank.Atendimento
 {
@@ -95,21 +96,22 @@ namespace bytebank_ATENDIMENTO.bytebank.Atendimento
             }
             else
             {
-                ExportaContas<ContaCorrente>.Exportar(_listaDeContas, @"C:\Users\fabio.masao\Desktop", "xml");
+                var caminhoArquivo = @"C:\Users\fmasa\Desktop";
+                //escreveArquivoXml(caminhoArquivo, _listaDeContas.ToList<object>());
+                ExportaContas.ExportaContas.Exportar(_listaDeContas.ToList<object>(), caminhoArquivo, "xml");
                 //string json = JsonConvert.SerializeObject(_listaDeContas, Formatting.Indented);
 
                 //try
                 //{
-                //    using (FileStream fs = new FileStream(@"C:\Users\fabio.masao\Desktop\contas.json", FileMode.Create)) 
+                //    using (FileStream fs = new FileStream(@"c:\users\fabio.masao\desktop\contas.json", FileMode.Create)) 
                 //    using (StreamWriter sw = new StreamWriter(fs))
                 //    {
                 //        sw.WriteLine(json);
                 //    }
-                //    Console.WriteLine("Arquivo salvo... em C:\\Users\\fabio.masao\\Desktop");
+                //    Console.WriteLine("arquivo salvo... em c:\\users\\fabio.masao\\desktop");
                 //}
                 //catch (Exception ex)
                 //{
-
                 //    throw new ByteBankException(ex.Message);
                 //    Console.ReadKey();
                 //}
@@ -258,6 +260,23 @@ namespace bytebank_ATENDIMENTO.bytebank.Atendimento
                 Console.ReadKey();
             }
 
+        }
+        private void escreveArquivoXml(string caminhoArquivo, List<object> lista)
+        {
+            var serializar = new XmlSerializer(typeof(List<object>));
+            try
+            {
+                using (FileStream fs = new FileStream(caminhoArquivo + "\\dados.xml", FileMode.Create))
+                using (StreamWriter streamwriter = new StreamWriter(fs))
+                {
+                    serializar.Serialize(fs, lista);
+                }
+                Console.WriteLine($"Arquivo salvo em {caminhoArquivo}");
+            }
+            catch (Exception excecao)
+            {
+                throw new Exception(excecao.Message);
+            }
         }
 
         private void CadastrarConta()

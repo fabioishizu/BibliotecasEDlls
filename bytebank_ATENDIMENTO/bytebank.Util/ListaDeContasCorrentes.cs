@@ -15,6 +15,10 @@ namespace bytebank_ATENDIMENTO.bytebank.Util
         {
             _itens = new ContaCorrente[tamanhoInicial];
         }
+        public ListaDeContasCorrentes()
+        {
+            
+        }
 
         public void Adicionar(ContaCorrente item)
         {

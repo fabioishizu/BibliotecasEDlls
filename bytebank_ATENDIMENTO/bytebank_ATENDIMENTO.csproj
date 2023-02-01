@@ -20,7 +20,7 @@
       <HintPath>..\..\bytebank_geradorChavePix\bytebank_geradorChavePix\bin\Debug\net6.0\bytebank_geradorChavePix.dll</HintPath>
     </Reference>
     <Reference Include="ExportaContas">
-      <HintPath>..\..\ExportaContas\ExportaContas\bin\Debug\net6.0\ExportaContas.dll</HintPath>
+      <HintPath>.\dll\ExportaContas.dll</HintPath>
     </Reference>
   </ItemGroup>
 

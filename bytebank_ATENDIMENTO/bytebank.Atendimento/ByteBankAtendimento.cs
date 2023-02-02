@@ -97,24 +97,8 @@ namespace bytebank_ATENDIMENTO.bytebank.Atendimento
             else
             {
                 var caminhoArquivo = @"C:\Users\fmasa\Desktop";
-                //escreveArquivoXml(caminhoArquivo, _listaDeContas.ToList<object>());
-                ExportaContas.ExportaContas.Exportar(_listaDeContas.ToList<object>(), caminhoArquivo, "xml");
-                //string json = JsonConvert.SerializeObject(_listaDeContas, Formatting.Indented);
 
-                //try
-                //{
-                //    using (FileStream fs = new FileStream(@"c:\users\fabio.masao\desktop\contas.json", FileMode.Create)) 
-                //    using (StreamWriter sw = new StreamWriter(fs))
-                //    {
-                //        sw.WriteLine(json);
-                //    }
-                //    Console.WriteLine("arquivo salvo... em c:\\users\\fabio.masao\\desktop");
-                //}
-                //catch (Exception ex)
-                //{
-                //    throw new ByteBankException(ex.Message);
-                //    Console.ReadKey();
-                //}
+                ExportaContas.ExportaContas.Exportar(_listaDeContas.ToList<object>(), caminhoArquivo, "xml");
             }
         }
 
